@@ -1,0 +1,3 @@
+#!/bin/bash -xe
+
+docker run -it --rm=true -v $(pwd):/home/$USER/shared py3docker:latest /bin/bash
