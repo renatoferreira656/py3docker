@@ -1,3 +1,12 @@
 #!/bin/bash -xe
 
-docker run -it --rm=true --network host -v $HOME/.aws:/home/$USER/.aws -v $HOME/.ssh:/home/$USER/.ssh -v $(pwd):/home/$USER/shared py3docker:latest /bin/bash
+mkdir -p lib-python
+docker run -it \
+           --rm=true \
+	   --network host \
+	   -v lib-python:$HOME/.local/lib/python3.8/site-packages \
+	   -v $HOME/.aws:/home/$USER/.aws \
+	   -v $HOME/.ssh:/home/$USER/.ssh \
+	   -v $(pwd):/home/$USER/shared \
+	   py3docker:latest \
+	   /bin/bash
