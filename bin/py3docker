@@ -4,9 +4,10 @@ mkdir -p lib-python
 docker run -it \
            --rm=true \
 	   --network host \
-	   -v lib-python:$HOME/.local/lib/python3.8/site-packages \
+	   -v $(pwd)/lib-python:$HOME/.local/lib/python3.8/site-packages \
 	   -v $HOME/.aws:/home/$USER/.aws \
 	   -v $HOME/.ssh:/home/$USER/.ssh \
 	   -v $(pwd):/home/$USER/shared \
+	   -u $(id -un) \
 	   py3docker:latest \
 	   /bin/bash

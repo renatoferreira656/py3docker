@@ -8,7 +8,6 @@ RUN apt-get update -y
 RUN apt-get install sudo vim openssh-server -y
 
 RUN pip install pandas psycopg2 SQLAlchemy
-RUN /usr/local/bin/python -m pip install --upgrade pip
 RUN addgroup --gid $GROUP_ID $USERNAME 
 RUN useradd --uid $USER_ID --gid $GROUP_ID $USERNAME \ 
     && echo "${USERNAME}:123" | chpasswd
